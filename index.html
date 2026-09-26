@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dangote Sugar - Backward Integration</title>
+<meta name="description" content="A refinery that earns ₦123bn and pays ₦175bn to finance its raw material. An independent project finance and commodity risk analysis of Dangote Sugar's backward integration programme. Yusuf Zayyad Aliyu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Spectral:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12202A; --ink-2:#33454F; --dim:#6B7D84;
+  --paper:#E8ECEA; --sheet:#F4F6F5; --rule:#C3CFCA;
+  --flow:#1D6B62; --gap:#8A2B3D; --amber:#9A7B1F;
+  --cane:#9A7B1F;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.6;
+  font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.14;margin:0;letter-spacing:-.01em}
+p{margin:0 0 1.1em;max-width:68ch}
+a{color:var(--flow);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--flow);outline-offset:3px}
+
+.masthead{border-bottom:1px solid var(--rule);padding:22px 0 18px}
+.masthead .wrap{display:flex;flex-wrap:wrap;gap:6px 26px;align-items:baseline}
+.mast-name{font-family:var(--serif);font-size:19px;font-weight:600}
+.mast-meta{font-size:14px;color:var(--dim)}
+.mast-meta span+span::before{content:"";display:inline-block;width:1px;height:11px;
+  background:var(--rule);margin:0 12px -1px}
+
+.hero{padding:64px 0 40px}
+.kicker{font-size:14px;color:var(--gap);font-weight:600;margin-bottom:18px}
+.hero h1{font-size:clamp(34px,5.4vw,58px);max-width:18ch}
+.hero .stand{font-size:clamp(17px,2vw,20px);color:var(--ink-2);max-width:62ch;margin-top:22px}
+
+.chart{margin:54px 0 12px}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart-legend{display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:28px;
+  padding-top:18px;border-top:1px solid var(--rule)}
+.leg{max-width:30ch}
+.leg b{display:block;font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.1}
+.leg span{font-size:14.5px;color:var(--dim);display:block;margin-top:4px}
+.leg.is-gap b{color:var(--gap)}
+.leg.is-flow b{color:var(--flow)}
+.leg.is-cane b{color:var(--cane)}
+
+section{padding:52px 0;border-top:1px solid var(--rule)}
+section h2{font-size:clamp(25px,3.2vw,34px);margin-bottom:8px;max-width:24ch}
+.lede{color:var(--ink-2);margin-top:14px}
+
+.facts{border-top:1px solid var(--rule);margin-top:28px}
+.facts div{display:flex;flex-wrap:wrap;gap:4px 20px;justify-content:space-between;
+  padding:13px 0;border-bottom:1px solid var(--rule)}
+.facts dt{color:var(--ink-2);font-size:15.5px;flex:1 1 15rem}
+.facts dd{margin:0;font-weight:600;font-size:15.5px;text-align:right}
+
+.tbl-scroll{overflow-x:auto;margin-top:28px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:15.5px}
+th,td{text-align:right;padding:12px 14px;border-bottom:1px solid var(--rule)}
+th:first-child,td:first-child{text-align:left;padding-left:0}
+td:last-child,th:last-child{padding-right:0}
+thead th{font-weight:600;font-size:14px;color:var(--dim);
+  border-bottom:1px solid var(--ink);vertical-align:bottom}
+.neg{color:var(--gap)}
+.pos{color:var(--flow)}
+tbody tr.emph td,tbody tr.emph th{font-weight:600}
+
+.pull{margin:34px 0 0;padding:30px 0 4px;border-top:3px solid var(--ink)}
+.pull p{font-family:var(--serif);font-size:clamp(21px,2.9vw,29px);line-height:1.34;
+  max-width:30ch;margin:0}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:30px}
+.col h3{font-size:21px;margin-bottom:4px}
+.col .role{font-size:14.5px;color:var(--dim);margin-bottom:14px}
+.col p{font-size:16px;color:var(--ink-2);margin:0}
+.col .big{font-family:var(--serif);font-size:38px;font-weight:600;line-height:1.1;
+  display:block;margin:14px 0 4px}
+.col .biglab{font-size:14.5px;color:var(--dim);display:block;margin-bottom:14px}
+
+.estates{margin-top:30px;border-top:1px solid var(--rule)}
+.est{display:grid;grid-template-columns:minmax(9rem,13rem) 1fr auto;gap:8px 20px;
+  padding:18px 0;border-bottom:1px solid var(--rule);align-items:start}
+.est b{font-size:16.5px}
+.est p{font-size:15.5px;color:var(--ink-2);margin:0;max-width:56ch}
+.tag{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  white-space:nowrap;padding-top:3px}
+.tag.go{color:var(--flow)} .tag.mid{color:var(--cane)} .tag.stop{color:var(--gap)}
+
+.bars{margin-top:30px}
+.bar-row{display:grid;grid-template-columns:minmax(9rem,16rem) 1fr auto;
+  gap:14px;align-items:center;padding:9px 0}
+.bar-label{font-size:15.5px;color:var(--ink-2)}
+.bar-track{background:var(--sheet);height:24px;position:relative;border-radius:1px}
+.bar-fill{position:absolute;inset:0 auto 0 0;border-radius:1px}
+.bar-fill.px{background:var(--gap)}
+.bar-fill.est{background:var(--cane)}
+.bar-fill.fin{background:var(--ink-2)}
+.bar-val{font-size:15px;font-weight:600;min-width:3.4rem;text-align:right}
+
+.reg{display:flex;flex-wrap:wrap;gap:26px 46px;margin-top:30px;
+  padding-top:24px;border-top:1px solid var(--rule)}
+.reg div b{font-family:var(--serif);font-size:34px;font-weight:600;display:block;line-height:1}
+.reg div span{font-size:14.5px;color:var(--dim);display:block;margin-top:5px;max-width:24ch}
+
+details{border-top:1px solid var(--rule);padding:16px 0}
+summary{cursor:pointer;font-weight:600;font-size:16px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";display:inline-block;width:1.4em;color:var(--flow);font-weight:600}
+details[open] summary::before{content:"–"}
+details p{margin:12px 0 0 1.4em;font-size:16px;color:var(--ink-2)}
+
+footer{border-top:1px solid var(--rule);padding:44px 0 72px;font-size:14.5px;color:var(--dim)}
+footer strong{color:var(--ink);font-weight:600}
+footer p{max-width:76ch}
+
+@media (max-width:720px){ .split{grid-template-columns:1fr;gap:28px} }
+@media (max-width:620px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  .hero{padding:44px 0 30px}
+  section{padding:40px 0}
+  .bar-row{grid-template-columns:1fr auto;gap:4px 12px}
+  .bar-label{grid-column:1/-1}
+  .facts div{flex-direction:column}
+  .facts dd{text-align:left}
+  .est{grid-template-columns:1fr auto}
+  .est p{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:no-preference){ .bar-fill{transition:width .4s ease} }
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#E6ECE9; --ink-2:#B3C2BE; --dim:#8497A0;
+    --paper:#0E1A21; --sheet:#182730; --rule:#2C3F49;
+    --flow:#4FAE9F; --gap:#D1657A; --amber:#C9A648; --cane:#C9954B;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E6ECE9; --ink-2:#B3C2BE; --dim:#8497A0;
+  --paper:#0E1A21; --sheet:#182730; --rule:#2C3F49;
+  --flow:#4FAE9F; --gap:#D1657A; --amber:#C9A648; --cane:#C9954B;
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <span class="mast-name">Yusuf Zayyad Aliyu</span>
+    <span class="mast-meta">
+      <span>Project finance &amp; credit risk modelling</span>
+      <span>Abuja, Nigeria</span>
+    </span>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <p class="kicker">Independent analysis · Dangote Sugar Refinery Plc</p>
+    <h1>It earns ₦123bn refining sugar and pays ₦175bn to finance the raw material.</h1>
+    <p class="stand">Backward integration at Dangote Sugar is usually described as a growth
+    project. The FY2025 accounts say it is something else: the only available repair to a balance
+    sheet that is refinanced every twelve months.</p>
+
+    <div class="chart">
+      <svg viewBox="0 0 1000 250" role="img"
+           aria-label="Finance charges as a multiple of gross profit: 1.43 times in FY2025, falling year by year and dropping below one only in FY2030, reaching 0.78 in FY2032.">
+        <line x1="0" y1="200" x2="1000" y2="200" stroke="var(--rule)" stroke-width="1"/>
+        <line x1="0" y1="76.1" x2="1000" y2="76.1" stroke="var(--ink)" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <text x="1000" y="67.1" text-anchor="end" fill="var(--ink)" font-family="Archivo,sans-serif" font-size="15" font-weight="600">1.00x</text>
+        <rect x="8" y="22.9" width="96" height="177.1" fill="var(--gap)"/>
+        <rect x="135" y="35.3" width="96" height="164.7" fill="var(--gap)"/>
+        <rect x="262" y="47.6" width="96" height="152.4" fill="var(--gap)"/>
+        <rect x="389" y="60.0" width="96" height="140.0" fill="var(--gap)"/>
+        <rect x="516" y="71.2" width="96" height="128.8" fill="var(--gap)"/>
+        <rect x="643" y="82.3" width="96" height="117.7" fill="var(--flow)"/>
+        <rect x="770" y="93.5" width="96" height="106.5" fill="var(--flow)"/>
+        <rect x="897" y="103.4" width="96" height="96.6" fill="var(--flow)"/>
+        <text x="56" y="12.9" text-anchor="middle" fill="var(--gap)" font-family="Archivo,sans-serif" font-size="17" font-weight="600">1.43</text>
+        <text x="183" y="25.3" text-anchor="middle" fill="var(--gap)" font-family="Archivo,sans-serif" font-size="17" font-weight="600">1.33</text>
+        <text x="310" y="37.6" text-anchor="middle" fill="var(--gap)" font-family="Archivo,sans-serif" font-size="17" font-weight="600">1.23</text>
+        <text x="437" y="50.0" text-anchor="middle" fill="var(--gap)" font-family="Archivo,sans-serif" font-size="17" font-weight="600">1.13</text>
+        <text x="564" y="61.2" text-anchor="middle" fill="var(--gap)" font-family="Archivo,sans-serif" font-size="17" font-weight="600">1.04</text>
+        <text x="691" y="72.3" text-anchor="middle" fill="var(--flow)" font-family="Archivo,sans-serif" font-size="17" font-weight="600">0.95</text>
+        <text x="818" y="83.5" text-anchor="middle" fill="var(--flow)" font-family="Archivo,sans-serif" font-size="17" font-weight="600">0.86</text>
+        <text x="945" y="93.4" text-anchor="middle" fill="var(--flow)" font-family="Archivo,sans-serif" font-size="17" font-weight="600">0.78</text>
+        <text x="56" y="226" text-anchor="middle" fill="var(--ink)" font-family="Archivo,sans-serif" font-size="15">FY25</text>
+        <text x="183" y="226" text-anchor="middle" fill="var(--dim)" font-family="Archivo,sans-serif" font-size="15">FY26</text>
+        <text x="310" y="226" text-anchor="middle" fill="var(--dim)" font-family="Archivo,sans-serif" font-size="15">FY27</text>
+        <text x="437" y="226" text-anchor="middle" fill="var(--dim)" font-family="Archivo,sans-serif" font-size="15">FY28</text>
+        <text x="564" y="226" text-anchor="middle" fill="var(--dim)" font-family="Archivo,sans-serif" font-size="15">FY29</text>
+        <text x="691" y="226" text-anchor="middle" fill="var(--flow)" font-family="Archivo,sans-serif" font-size="15">FY30</text>
+        <text x="818" y="226" text-anchor="middle" fill="var(--flow)" font-family="Archivo,sans-serif" font-size="15">FY31</text>
+        <text x="945" y="226" text-anchor="middle" fill="var(--flow)" font-family="Archivo,sans-serif" font-size="15">FY32</text>
+      </svg>
+    </div>
+    <p style="font-size:14.5px;color:var(--dim);margin-top:10px">Finance charges as a multiple of
+    gross profit. FY2025 is reported; FY2026 onwards are modelled on base-case delivery of the cane
+    estates. FY2024 was 9.68 times and is left off the scale.</p>
+
+    <div class="chart-legend">
+      <div class="leg is-gap"><b>143%</b><span>finance charges as a share of gross profit in
+        FY2025</span></div>
+      <div class="leg is-gap"><b>94.9%</b><span>of ₦725.4bn of borrowings falls due within twelve
+        months</span></div>
+      <div class="leg is-flow"><b>FY2030</b><span>the first year financing stops exceeding gross
+        profit, on base case</span></div>
+    </div>
+  </div>
+
+  <section>
+    <h2>The position the programme has to be funded from</h2>
+    <p class="lede">Dangote Sugar returned to gross profitability in FY2025. Revenue rose 24.6 per
+    cent and gross margin went from 4.7 to 14.8 per cent. None of that reached the bottom line,
+    because the financing of the raw material consumed all of it and more.</p>
+
+    <div class="tbl-scroll">
+    <table>
+      <caption class="visually-hidden" style="position:absolute;left:-9999px">Dangote Sugar income
+      statement, FY2024 and FY2025, NGN billion</caption>
+      <thead>
+        <tr><th scope="col">NGN billion</th><th scope="col">FY2024</th><th scope="col">FY2025</th>
+        <th scope="col">Change</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Revenue</th><td>665.6</td><td>829.2</td><td class="pos">+24.6%</td></tr>
+        <tr class="emph"><th scope="row">Gross profit</th><td>31.1</td><td>122.6</td>
+          <td class="pos">+294%</td></tr>
+        <tr><th scope="row">Gross margin</th><td>4.7%</td><td>14.8%</td><td class="pos">+10.1pp</td></tr>
+        <tr class="emph"><th scope="row">Finance charges</th><td class="neg">(301.3)</td>
+          <td class="neg">(175.3)</td><td class="pos">−41.8%</td></tr>
+        <tr><th scope="row">Loss before tax</th><td class="neg">(270.9)</td>
+          <td class="neg">(72.3)</td><td class="pos">−73.3%</td></tr>
+        <tr class="emph"><th scope="row">Loss after tax</th><td class="neg">(192.6)</td>
+          <td class="neg">(64.1)</td><td class="pos">−66.7%</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <dl class="facts">
+      <div><dt>Total borrowings at 31 December 2025</dt><dd>₦725.4bn</dd></div>
+      <div><dt>Falling due within twelve months</dt><dd class="neg">₦688.1bn</dd></div>
+      <div><dt>Falling due beyond twelve months</dt><dd>₦37.3bn</dd></div>
+      <div><dt>Cash and equivalents</dt><dd>₦52.6bn</dd></div>
+      <div><dt>Current assets</dt><dd>₦343.3bn</dd></div>
+      <div><dt>Current liabilities</dt><dd>₦791.8bn</dd></div>
+      <div><dt>Working capital deficit</dt><dd class="neg">₦(448.5)bn</dd></div>
+      <div><dt>Current ratio</dt><dd class="neg">0.43x</dd></div>
+      <div><dt>Total equity</dt><dd>₦129.0bn</dd></div>
+      <div><dt>Working capital deficit against equity</dt><dd class="neg">3.5x</dd></div>
+    </dl>
+
+    <div class="pull">
+      <p>Short-dated creditors are funding a long-dated agricultural programme. The deficit is three
+      and a half times the entire equity base.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Nigeria grows two per cent of the sugar it eats</h2>
+    <p class="lede">The country consumes about 1.53 million tonnes a year and produces roughly two
+    per cent of it. Essentially the whole remainder arrives from a single country, priced in dollars
+    and financed on short-dated letters of credit.</p>
+
+    <div class="reg">
+      <div><b>2.1%</b><span>national sugar self-sufficiency ratio</span></div>
+      <div><b>₦954bn</b><span>raw sugar imported in the twelve months to June 2025</span></div>
+      <div><b>99.9%</b><span>of that import bill sourced from Brazil alone</span></div>
+      <div><b>2012</b><span>when the Sugar Master Plan first targeted self-sufficiency</span></div>
+    </div>
+
+    <p class="lede" style="margin-top:30px">Phase 2 of the plan, running to 2033, allocates raw
+    sugar import quota on backward integration performance rather than refining capacity. Progress
+    on the estates now determines access to the raw material the refinery runs on. A delay has a
+    regulatory consequence as well as an economic one.</p>
+  </section>
+
+  <section>
+    <h2>What a tonne of cane actually removes</h2>
+    <p class="lede">The programme is normally framed as replacing an import with domestic
+    production. It does three things at once, and only the first is a production cost.</p>
+
+    <div class="bars">
+      <div class="bar-row">
+        <span class="bar-label">Dollar purchase of raw sugar, landed</span>
+        <span class="bar-track"><span class="bar-fill px" style="width:100%"></span></span>
+        <span class="bar-val">$439</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Letter of credit that finances it</span>
+        <span class="bar-track"><span class="bar-fill fin" style="width:13.7%"></span></span>
+        <span class="bar-val">$60</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Replaced by the cash cost of growing</span>
+        <span class="bar-track"><span class="bar-fill est" style="width:72.9%"></span></span>
+        <span class="bar-val">$320</span>
+      </div>
+    </div>
+    <p style="font-size:14.5px;color:var(--dim);margin-top:16px">Per tonne of sugar. The exchange
+    loss on the purchase and on the letter of credit sits inside the ₦175.3bn finance charge line;
+    the company does not split interest from exchange loss.</p>
+
+    <div class="pull">
+      <p>Every tonne grown at Numan is worth about $179, and roughly a third of that is financing
+      the company simply stops paying.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>One producing, one building, one stopped</h2>
+    <p class="lede">Against a commitment of over $700 million, 150,000 hectares planned and a stated
+    target of 1.5 million tonnes a year, this is where the programme stands.</p>
+
+    <div class="estates">
+      <div class="est">
+        <b>Numan, Adamawa</b>
+        <p>3,000 tonnes of cane a day today, targeting 9,800 and ultimately 15,000. 24,200 hectares
+        to be developed by 2029.</p>
+        <span class="tag go">Operating</span>
+      </div>
+      <div class="est">
+        <b>Tunga, Nasarawa</b>
+        <p>Infrastructure development under way ahead of full-scale production.</p>
+        <span class="tag mid">In development</span>
+      </div>
+      <div class="est">
+        <b>Lau-Tau, Taraba</b>
+        <p>Activities halted over community payment issues, awaiting resolution by the state
+        government.</p>
+        <span class="tag stop">Halted</span>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>What delay costs</h3>
+        <p class="role">Forgone saving at steady state</p>
+        <span class="big" style="color:var(--gap)">1.19x</span>
+        <span class="biglab">one year of slippage, measured against total equity</span>
+        <p>A single year late costs about $60 million of forgone saving, or ₦154bn. Three years
+        costs more than three and a half times the equity base. One of the three estates has
+        already stopped.</p>
+      </div>
+      <div class="col">
+        <h3>What it reaches</h3>
+        <p class="role">Share of raw material grown, not imported</p>
+        <span class="big" style="color:var(--flow)">29.5%</span>
+        <span class="biglab">by FY2032, from 5.8% today, on base-case development</span>
+        <p>Even delivering to plan, roughly seven tonnes in ten are still bought in dollars in
+        FY2032. Self-sufficiency is not a 2032 question.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>A twelve per cent project financed at eighteen</h2>
+    <p class="lede">Judged as a project rather than as a narrative, the estates are value-neutral at
+    best. The capex figure is not an estimate: it is the company's own $700 million commitment
+    against its own 150,000 hectare target.</p>
+
+    <dl class="facts">
+      <div><dt>Cash saved per hectare, after tax and sustaining capex</dt><dd>$549</dd></div>
+      <div><dt>Capex per hectare developed</dt><dd>$4,700</dd></div>
+      <div><dt>Implied perpetual return on developed land</dt>
+        <dd style="color:var(--cane)">11.7%</dd></div>
+      <div><dt>Project discount rate applied</dt><dd>18.0%</dd></div>
+      <div><dt>Cumulative capex to FY2032</dt><dd>$245m</dd></div>
+      <div><dt>Net present value, including terminal value</dt><dd>+$7m</dd></div>
+      <div><dt>Equity injection needed to keep equity above zero</dt>
+        <dd class="neg">₦70bn</dd></div>
+      <div><dt>World sugar price at which growing stops beating importing</dt>
+        <dd>11.1 ¢/lb</dd></div>
+    </dl>
+
+    <div class="pull">
+      <p>The case for the programme is not the return on capital. It is that it removes the dollar,
+      the letter of credit and the annual refinancing all at once.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>The biggest risk is not execution</h2>
+    <p class="lede">Moving one assumption at a time from its best case to its worst, and measuring
+    the swing in the FY2032 annual saving, produces a ranking that is not the one the programme is
+    usually discussed in.</p>
+
+    <div class="bars">
+      <div class="bar-row"><span class="bar-label">World raw sugar price</span>
+        <span class="bar-track"><span class="bar-fill px" style="width:100%"></span></span>
+        <span class="bar-val">$76m</span></div>
+      <div class="bar-row"><span class="bar-label">Hectares added each year</span>
+        <span class="bar-track"><span class="bar-fill est" style="width:79%"></span></span>
+        <span class="bar-val">$60m</span></div>
+      <div class="bar-row"><span class="bar-label">Estate cash cost per tonne</span>
+        <span class="bar-track"><span class="bar-fill est" style="width:55%"></span></span>
+        <span class="bar-val">$42m</span></div>
+      <div class="bar-row"><span class="bar-label">Cane yield per hectare</span>
+        <span class="bar-track"><span class="bar-fill est" style="width:35%"></span></span>
+        <span class="bar-val">$27m</span></div>
+      <div class="bar-row"><span class="bar-label">Cost of financing</span>
+        <span class="bar-track"><span class="bar-fill fin" style="width:17%"></span></span>
+        <span class="bar-val">$13m</span></div>
+      <div class="bar-row"><span class="bar-label">Sugar recovery from cane</span>
+        <span class="bar-track"><span class="bar-fill est" style="width:16%"></span></span>
+        <span class="bar-val">$12m</span></div>
+      <div class="bar-row"><span class="bar-label">Freight, duty and handling</span>
+        <span class="bar-track"><span class="bar-fill fin" style="width:15%"></span></span>
+        <span class="bar-val">$12m</span></div>
+      <div class="bar-row"><span class="bar-label">Maximum hectares under cane</span>
+        <span class="bar-track"><span class="bar-fill est" style="width:9%"></span></span>
+        <span class="bar-val">$7m</span></div>
+      <div class="bar-row"><span class="bar-label">Hectares under cane in FY2026</span>
+        <span class="bar-track"><span class="bar-fill est" style="width:8%"></span></span>
+        <span class="bar-val">$6m</span></div>
+    </div>
+
+    <div class="pull">
+      <p>A falling world sugar price makes importing cheaper and strands the estates. The programme
+      is a long position in world sugar, taken on a balance sheet with no capacity to carry one.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>How the model was built</h2>
+    <p class="lede">The central move is to stop reading the company's volumes and realised price as
+    given — neither is disclosed and instead derive both from the audited cost of sales, so the
+    unit economics reconcile to the accounts by construction rather than by assumption.</p>
+    <div class="reg">
+      <div><b>34</b><span>inputs taken directly from published results and official data</span></div>
+      <div><b>9</b><span>derived by calculation from disclosed figures</span></div>
+      <div><b>13</b><span>analyst estimates, each named and sourced as such</span></div>
+    </div>
+    <div style="margin-top:34px">
+      <details>
+        <summary>Structure</summary>
+        <p>Twelve tabs, 1,119 formulas, 31 automated integrity checks, FY2024 to FY2032 so the cane
+        ramp is visible. The estates are modelled as a standalone project against the counterfactual
+        of continuing to import every tonne, so the programme is valued on the difference rather
+        than on a growth story.</p>
+      </details>
+      <details>
+        <summary>How volume and price were derived</summary>
+        <p>Dangote Sugar does not disclose sales volume or realised price. Cost of sales is
+        disclosed - revenue less gross profit - so volume falls out of it once the cash cost per
+        tonne refined is built from the world raw sugar price, freight and duty, refining loss and
+        conversion cost. FY2025 volume comes to 0.863 Mt, which is 60 per cent of the 1.44 Mt Apapa
+        capacity and a credible number. Realised price is then revenue over that volume. Gross
+        margin reconciles to the audited 14.8 per cent by construction.</p>
+      </details>
+      <details>
+        <summary>The assumption doing the most work</summary>
+        <p>The blended cost of financing, 13.7 per cent, is not assumed. It is calibrated so the
+        model reproduces the disclosed ₦175.3bn finance charge from the sum of borrowings and the
+        naira value of raw sugar under letters of credit. An automated check fails if that
+        calibration ever drifts. The estate cash cost of $320 a tonne is the genuinely soft number,
+        and the sensitivity ranking shows it third.</p>
+      </details>
+      <details>
+        <summary>Why two different return figures appear</summary>
+        <p>The project internal rate of return is taken on a series whose final term is a perpetuity
+        already discounted at 18 per cent, and the 5,000 hectares standing at the start of the model
+        carry no capex in it. Both flatter the figure. The implied perpetual return on developed
+        land - cash from one hectare against the capex on that hectare, with no terminal value
+        assumption and no free acreage - is the cleaner measure, and it is 11.7 per cent. Both are
+        shown rather than the more favourable one being chosen.</p>
+      </details>
+      <details>
+        <summary>What is not modelled</summary>
+        <p>The regulatory quota is treated qualitatively rather than as a modelled revenue stream,
+        because the allocation formula under Phase 2 is not public in enough detail to price. The
+        company does not split interest from exchange loss within finance charges, so neither does
+        the model. Administrative and selling costs are held as a single ₦19.61bn residual implied
+        by the FY2025 bridge rather than projected line by line.</p>
+      </details>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Yusuf Zayyad Aliyu</strong> - BSc Statistics, FMVA, full member CILRM. Built in Excel with a full assumptions register and automated integrity checks. The
+    workbook is available on request.</p>
+    <p style="margin-top:18px">This is an independent, illustrative analytical exercise prepared
+    from publicly available information for portfolio and educational purposes. It is not
+    investment, financial or legal advice, is not a recommendation regarding any security, and is
+    not affiliated with, endorsed by or prepared on behalf of Dangote Sugar Refinery Plc or any of
+    its affiliates. Historical figures are from published results. Sales volume, realised price,
+    estate hectares, cane yields, sugar recovery, estate operating cost, capex per hectare, the
+    forward naira path and all projections are the analyst's own and should be read as
+    sensitivities, not forecasts.</p>
+    <p style="margin-top:18px">Sources: Dangote Sugar Refinery Plc FY2025 audited financial
+    statements and results announcement to 31 December 2025; company disclosures on the backward
+    integration programme at Numan, Tunga and Lau-Tau; National Sugar Master Plan Phase 2 and
+    National Sugar Development Council material; National Bureau of Statistics foreign trade
+    statistics for raw sugar imports in the twelve months to June 2025; NAFEM closing rates.</p>
+  </div>
+</footer>
+
+</body>
+</html>
